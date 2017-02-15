@@ -48,25 +48,28 @@ public class MergeSortTester
 	filler(test100);
 	filler(testBig);
 
+
 	long start = System.nanoTime();
 	Mergesort.sort(test1);
 	long time = System.nanoTime() - start;
 	System.out.println(time);
 
+
 	long start2 = System.nanoTime();
 	Mergesort.sort(test10);
-	long time2 = System.nanoTime() - start;
+	long time2 = System.nanoTime() - start2;
 	System.out.println(time2);
 
 	long start3 = System.nanoTime();
 	Mergesort.sort(test100);
-	long time3 = System.nanoTime() - start;
+	long time3 = System.nanoTime() - start3;
 	System.out.println(time3);
 
 	long start4 = System.nanoTime();
 	Mergesort.sort(testBig);
-	long time4 = System.nanoTime() - start;
+	long time4 = System.nanoTime() - start4;
 	System.out.println(time4);
+
 	
 	
 			        
