@@ -26,17 +26,18 @@
 
   Mean execution times for dataset of size n:
   Batch size: 10000
-  n=1       time: ~661
-  n=10      time: ~1928
-  n=100     time: ~21507
+  n=1       time: ~220
+  n=10      time: ~1448
+  n=100     time: ~14210
   ...
-  n=<huge>  time: ~223554
+  n=<huge>  time: ~153699
 
   ANALYSIS:
  While the results should represent a n log n graph, our time results are not exact to the graph.
  This may be due to certain outliers within the batch. As the number of items in the array begins
- to increase, the runtime is seen to slow down. The time received for n = 1 seems to be a bit off.
- This may be due to the nanotime method rather than the sort method. 
+ to increase, the runtime is seen to slow down. Certain inaccurate data may be due to the nanotime 
+ method rather than the sort method. In addition, Brian's results were seen to differ from those of
+ Yuyang. This may have to do with the computers used.
   ======================================*/
 
 import java.util.ArrayList;
