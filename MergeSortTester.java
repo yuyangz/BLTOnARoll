@@ -27,7 +27,7 @@
   Mean execution times for dataset of size n:
   Batch size: 10000
   n=1       time: ~220
-  n=10      time: ~1448
+  n=10      time: ~1539
   n=100     time: ~14210
   ...
   n=<huge>  time: ~153699
