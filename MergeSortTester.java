@@ -33,7 +33,10 @@
   n=<huge>  time: ~223554
 
   ANALYSIS:
-  <INSERT YOUR RESULTS ANALYSIS HERE>
+ While the results should represent a n log n graph, our time results are not exact to the graph.
+ This may be due to certain outliers within the batch. As the number of items in the array begins
+ to increase, the runtime is seen to slow down. The time received for n = 1 seems to be a bit off.
+ This may be due to the nanotime method rather than the sort method. 
   ======================================*/
 
 import java.util.ArrayList;
@@ -43,9 +46,10 @@ public class MergeSortTester
    
     /******************************
      * execution time analysis 
-     * <INSERT YOUR DESCRIPTION HERE OF 
-     *  YOUR APPARATUS FOR GENERATING EXECUTION 
-     *  TIME DATA...>
+    We first create a helper function in which values are filled into an array. We created 4 different
+    arrays of different sizes. We then ran each array 10000 times and through the use of nanoTime, we 
+    were able to determine the apprpoximate runtime. The average of the 10000 runs will be used to represent
+    each array. 
      ******************************/
 
     public static int[] filler(int[] arr){
