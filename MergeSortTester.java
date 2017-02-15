@@ -1,23 +1,42 @@
+// Team BLTOnARoll -- Brian "Baiyun" Kwong, Yuyang Zhang, Datian Zhang
+// APCS2 pd1
+// HW07 -- What Does the Data Say?
+// 2017-02-15
+
 /*======================================
   class MergeSortTester
 
   ALGORITHM:
-  <INSERT YOUR DISTILLATION OF ALGO HERE>
+  If length of input array is greater than 1, split in half.
+  To split in half, copy the first half of the input into a new array.
+  Copy the second half into a third array.
+  Apply the MergeSort algo on each of the halves.
+
+  If length of input array is 1, we can safely assume it's sorted.
+  Merge with another sorted array using Merge method.
+
+  Merge method -- combines two sorted arrays, maintaining sorted state.
+  Done by creating a new array. This array will be filled either by the elements in the
+  first array or the second using a counter for each one. 
+
+  Repeat Merge method until original array is returned, in sorted state.
 
   BIG-OH CLASSIFICATION OF ALGORITHM:
-  <INSERT YOUR EXECUTION TIME CATEGORIZATION OF MERGESORT HERE>
+  O(n log n)
 
   Mean execution times for dataset of size n:
-  Batch size: <# of times each dataset size was run>
-  n=1       time: 
-  n=10      time: 
-  n=100     time: 
+  Batch size: 10000
+  n=1       time: ~661
+  n=10      time: ~1928
+  n=100     time: ~21507
   ...
-  n=<huge>  time: 
+  n=<huge>  time: ~223554
 
   ANALYSIS:
   <INSERT YOUR RESULTS ANALYSIS HERE>
   ======================================*/
+
+import java.util.ArrayList;
 
 public class MergeSortTester 
 {
@@ -35,6 +54,14 @@ public class MergeSortTester
 	}
 	return arr;
     }
+
+    public static long average(long[] arr){
+	long sum = 0L;
+	for (int x = 0; x < arr.length; x += 1){
+	    sum += arr[x];
+	}
+	return sum / (arr.length-1);
+    }
     
     public static void main( String[] args ) 
     {
@@ -43,36 +70,54 @@ public class MergeSortTester
 	int[] test100 = new int[100];
 	int[] testBig = new int [1000];  
 
-	filler(test1);
-	filler(test10);
-	filler(test100);
-	filler(testBig);
+	int batchSize = 10000;
 
+	long[] test1Results = new long[batchSize];
+	long[] test10Results = new long[batchSize];
+	long[] test100Results = new long[batchSize];
+	long[] testBigResults = new long[batchSize];
 
-	long start = System.nanoTime();
-	Mergesort.sort(test1);
-	long time = System.nanoTime() - start;
-	System.out.println(time);
+	for (int i = 0; i < batchSize; i++) {
+	    // System.out.println( "Now running Batch Number " + i );
 
+	    filler(test1);
+	    filler(test10);
+	    filler(test100);
+	    filler(testBig);
 
-	long start2 = System.nanoTime();
-	Mergesort.sort(test10);
-	long time2 = System.nanoTime() - start2;
-	System.out.println(time2);
+	    long start = System.nanoTime();
+	    Mergesort.sort(test1);
+	    long time = System.nanoTime() - start;
+	    // System.out.println( "Array Length 1: " + time );
+	    test1Results[i] = time;
 
-	long start3 = System.nanoTime();
-	Mergesort.sort(test100);
-	long time3 = System.nanoTime() - start3;
-	System.out.println(time3);
+	    long start2 = System.nanoTime();
+	    Mergesort.sort(test10);
+	    long time2 = System.nanoTime() - start2;
+	    // System.out.println( "Array Length 10: " + time2 );
+	    test10Results[i] = time2;
 
-	long start4 = System.nanoTime();
-	Mergesort.sort(testBig);
-	long time4 = System.nanoTime() - start4;
-	System.out.println(time4);
+	    long start3 = System.nanoTime();
+	    Mergesort.sort(test100);
+	    long time3 = System.nanoTime() - start3;
+	    // System.out.println( "Array Length 100: " + time3 );
+	    test100Results[i] = time3;
 
-	
-	
+	    long start4 = System.nanoTime();
+	    Mergesort.sort(testBig);
+	    long time4 = System.nanoTime() - start4;
+	    // System.out.println( "Array Length 1000: " + time4 );
+	    testBigResults[i] = time4;
+
+	}
+
+	System.out.println("Averages");
+	System.out.println( "Array Length 1: " + average( test1Results ) );
+	System.out.println( "Array Length 10: " + average( test10Results ) );
+	System.out.println( "Array Length 100: " + average( test100Results ) );
+	System.out.println( "Array Length 1000: " + average( testBigResults ) );
+
 			        
-}//end main
+    }//end main
 
 }//end class
