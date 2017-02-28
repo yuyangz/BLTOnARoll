@@ -54,75 +54,101 @@ public class MergeSortTester
      ******************************/
 
     public static int[] filler(int[] arr){
-	for (int x = 0 ; x < arr.length; x += 1){
-	    arr[x] = (int)(Math.random()) * 10;
-	}
-	return arr;
+for (int x = 0 ; x < arr.length; x += 1){
+   arr[x] = (int)(Math.random()) * 10;
+}
+return arr;
     }
 
     public static long average(long[] arr){
-	long sum = 0L;
-	for (int x = 0; x < arr.length; x += 1){
-	    sum += arr[x];
-	}
-	return sum / (arr.length-1);
+long sum = 0L;
+for (int x = 0; x < arr.length; x += 1){
+   sum += arr[x];
+}
+return sum / (arr.length-1);
     }
     
     public static void main( String[] args ) 
     {
-	int[] test1 = new int[1];
-	int[] test10 = new int[10];
-	int[] test100 = new int[100];
-	int[] testBig = new int [1000];  
+int[] test1 = new int[1];
+int[] test10 = new int[10];
+int[] test100 = new int[100];
+int[] testBig = new int [1000];
+int[] testBig2 = new int [10000];
+int[] testBig3 = new int [100000];
+int[] testBig4 = new int [1000000];
 
-	int batchSize = 10000;
+int batchSize = 10000;
 
-	long[] test1Results = new long[batchSize];
-	long[] test10Results = new long[batchSize];
-	long[] test100Results = new long[batchSize];
-	long[] testBigResults = new long[batchSize];
+long[] test1Results = new long[batchSize];
+long[] test10Results = new long[batchSize];
+long[] test100Results = new long[batchSize];
+long[] testBigResults = new long[batchSize];
+long[] testBigResults2 = new long[batchSize];
+long[] testBigResults3 = new long[batchSize];
+long[] testBigResults4 = new long[batchSize];
 
-	for (int i = 0; i < batchSize; i++) {
-	    // System.out.println( "Now running Batch Number " + i );
+for (int i = 0; i < batchSize; i++) {
+   // System.out.println( "Now running Batch Number " + i );
 
-	    filler(test1);
-	    filler(test10);
-	    filler(test100);
-	    filler(testBig);
+   filler(test1);
+   filler(test10);
+   filler(test100);
+   filler(testBig);
+   filler(testBig2);
+   filler(testBig3);
+   filler(testBig4);
 
-	    long start = System.nanoTime();
-	    Mergesort.sort(test1);
-	    long time = System.nanoTime() - start;
-	    // System.out.println( "Array Length 1: " + time );
-	    test1Results[i] = time;
+   long start = System.nanoTime();
+   Mergesort.sort(test1);
+   long time = System.nanoTime() - start;
+   // System.out.println( "Array Length 1: " + time );
+   test1Results[i] = time;
 
-	    long start2 = System.nanoTime();
-	    Mergesort.sort(test10);
-	    long time2 = System.nanoTime() - start2;
-	    // System.out.println( "Array Length 10: " + time2 );
-	    test10Results[i] = time2;
+   long start2 = System.nanoTime();
+   Mergesort.sort(test10);
+   long time2 = System.nanoTime() - start2;
+   // System.out.println( "Array Length 10: " + time2 );
+   test10Results[i] = time2;
 
-	    long start3 = System.nanoTime();
-	    Mergesort.sort(test100);
-	    long time3 = System.nanoTime() - start3;
-	    // System.out.println( "Array Length 100: " + time3 );
-	    test100Results[i] = time3;
+   long start3 = System.nanoTime();
+   Mergesort.sort(test100);
+   long time3 = System.nanoTime() - start3;
+   // System.out.println( "Array Length 100: " + time3 );
+   test100Results[i] = time3;
 
-	    long start4 = System.nanoTime();
-	    Mergesort.sort(testBig);
-	    long time4 = System.nanoTime() - start4;
-	    // System.out.println( "Array Length 1000: " + time4 );
-	    testBigResults[i] = time4;
+   long start4 = System.nanoTime();
+   Mergesort.sort(testBig);
+   long time4 = System.nanoTime() - start4;
+   // System.out.println( "Array Length 1000: " + time4 );
+   testBigResults[i] = time4;
 
-	}
+   long start5 = System.nanoTime();
+   Mergesort.sort(testBig2);
+   long time5 = System.nanoTime() - start5;
+   testBigResults2[i] = time5;
 
-	System.out.println("Averages");
-	System.out.println( "Array Length 1: " + average( test1Results ) );
-	System.out.println( "Array Length 10: " + average( test10Results ) );
-	System.out.println( "Array Length 100: " + average( test100Results ) );
-	System.out.println( "Array Length 1000: " + average( testBigResults ) );
+   long start6 = System.nanoTime();
+   Mergesort.sort(testBig3);
+   long time6 = System.nanoTime() - start6;
+   testBigResults3[i] = time6;
 
-			        
+   long start7 = System.nanoTime();
+   Mergesort.sort(testBig3);
+   long time7 = System.nanoTime() - start7;
+   testBigResults4[i] = time7;
+
+}
+
+System.out.println("Averages");
+System.out.println( "Array Length 1: " + average( test1Results ) );
+System.out.println( "Array Length 10: " + average( test10Results ) );
+System.out.println( "Array Length 100: " + average( test100Results ) );
+System.out.println( "Array Length 1000: " + average( testBigResults ) );
+System.out.println( "Array Length 10000: " + average( testBigResults2 ) );
+System.out.println( "Array Length 100000: " + average( testBigResults3 ) );
+System.out.println( "Array Length 1000000: " + average( testBigResults4 ) );
+       
     }//end main
 
 }//end class
