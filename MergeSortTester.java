@@ -30,7 +30,10 @@
   n=10      time: ~1539
   n=100     time: ~14210
   ...
-  n=<huge>  time: ~153699
+  n=1000  time: ~153699
+  n=10000 time: ~1422843
+  n=100000 time: ~14987890
+  n=1000000 time: ~15000395
 
   ANALYSIS:
  While the results should represent a n log n graph, our time results are not exact to the graph.
